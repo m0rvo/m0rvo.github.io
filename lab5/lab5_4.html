@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>flex</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        .flex-container {
+            display: flex;
+            padding: 10px;
+            align-items: flex-start; /* Align items to the top */
+        }
+
+        .flex-item {
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #left-flex {
+            min-width: 200px;
+            background: #ccf;
+        }
+
+        #center-flex {
+            flex-grow: 1;
+            background: #cfc;
+            margin: 0 10px;
+        }
+
+        #right-flex {
+            min-width: 200px;
+            background: #fcc;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div id="left-flex" class="flex-item">left<br>left<br>left<br>left<br>left</div>
+        <div id="center-flex" class="flex-item">
+            center text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text</div>
+        <div id="right-flex" class="flex-item">right<br>right<br>right<br>right</div>
+    </div>
+</body>
+</html>

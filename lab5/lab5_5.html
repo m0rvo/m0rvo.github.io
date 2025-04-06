@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>grid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 10px; 
+        }
+
+        .grid-container {
+            display: grid; 
+            grid-template-columns: 200px 1fr 200px; 
+            gap: 10px; 
+            align-items: flex-start;
+        }
+
+        .grid-item {
+            padding: 10px; 
+        }
+
+        #left-inline {
+            background: #ccf; 
+        }
+
+        #center-inline {
+            background: #cfc;
+        }
+
+        #right-inline {
+            background: #fcc; 
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div id="left-inline" class="grid-item">left<br>left<br>left<br>left<br>left</div>
+        <div id="center-inline" class="grid-item">
+            center text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text text text text text text text text text text text
+            text text text text
+        </div>
+        <div id="right-inline" class="grid-item">right<br>right<br>right<br>right</div>
+    </div>
+</body>
+</html>
