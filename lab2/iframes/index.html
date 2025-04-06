@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Организация фреймовой структуры</title>
+    <style>
+        .menu-frame {
+            width: 200px;
+            height: 100%;
+            float: left;
+        }
+
+        .content-frame {
+            width: calc(100% - 210px);
+            height: 100%;
+            float: right;
+        }
+
+        html,
+        body {
+
+            height: 99%;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe class="menu-frame" src="menu.html" name="menu"></iframe>
+    <iframe class="content-frame" src="content.html" name="content"></iframe>
+</body>
+
+</html>
