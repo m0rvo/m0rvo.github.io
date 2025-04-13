@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Заголовок страницы -->
+    <title>STROI.RU</title>
+    <link rel="icon" href="/lab7/m/logo.jpg" type="image/x-icon" />
+
+    <!-- Подключения таблицы стилей Bootstrap 3 -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <!-- Подключение темы со стилями Bootstrap 3 -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+    <!-- Подключение таблицы стилей иконок Awesome -->
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <!-- Подключение таблицы стилей, в которой будем прописывать свои стили -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <!-- Подключение библиотеки jQuery для работы скриптов Bootstrap 3 -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <!-- Подключение скриптов Bootstrap 3 -->
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <header style="padding-top: 5px">
+        <div id="logo" style="float: left">
+          <img src="/lab7/m/logo.jpg" width="100" height="90" alt="насяльника.png" />
+        </div>
+        <div id="contacts" style="float: right">
+          <i class="fa fa-mobile fa-lg"></i> +7-800-555-35-35
+          <i class="fa fa-envelope fa-lg"></i> ZAMSUT@STROI.XYZ
+          <i
+            class="fa fa-facebook-square fa-2x"
+            style="margin-left: 10px; color: blue"
+          ></i>
+        </div>
+        <div class="clearfix"></div>
+      </header>
+
+      <nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#bs-menu"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-menu">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Главная</a></li>
+            <li><a href="#main">О компании</a></li>
+            <li><a href="#method">Наш методы</a></li>
+            <li><a href="#work">Наши проекты</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="#" style="padding-top: 8px; padding-bottom: 8px">
+                <span class="btn btn-danger"
+                  ><strong>насялькику</strong></span
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div id="header-bottom" style="position: relative">
+        <img src="/lab7/m/shapka.jpg" style="width: 100%" alt="ssss.jpg" />
+        <div
+          id="bannertext"
+          style="
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            text-align: center;
+            color: white;
+          "
+        >
+          <div class="hidden-xs">
+            <h1>
+              Мы предлагаем<br />
+              <small style="color: white"
+                >лутсий ремонт от жамшута</small
+              >
+            </h1>
+          </div>
+
+          <div class="hidden-sm hidden-md hidden-lg">
+            <p class="lead">
+              все будет в лутсем виде брат
+            </p>
+          </div>
+          <a class="btn btn-danger btn-lg">Консультация у джамшута</a>
+        </div>
+      </div>
+
+      <div id="main">
+        <div class="row" style="text-align: center; margin: 15px">
+          <h2>О компании</h2>
+          <p class="lead">Наши основные услуги</p>
+          <hr />
+          <div class="col-md-4">
+            <img src="/lab7/m/terminator.jpg" width="80" height="80" alt="" />
+            <h3>Передовые технологии</h3>
+            <p>терминтаор джамшут 3000т</p>
+          </div>
+          <div class="col-md-4">
+            <img src="/lab7/m/2vkl.png" width="80" height="80" alt="da.png" />
+            <h3>скорость</h3>
+            <p>сделаем все в лутсем виде(наверное) за 1 день</p>
+          </div>
+          <div class="col-md-4">
+            <img src="/lab7/m/rav1.jpg" width="80" height="80" alt="" />
+            <h3>понимающие работники</h3>
+            <p>равшан луше всех говорит на русском(лучше джамшута)</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="method">
+        <div class="row" style="text-align: center; color: rgb(255, 0, 0); background: rgba(0, 0, 0, 0.997)">
+          <h2>Наши методы</h2>
+          <p class="lead">Наш метод шаг за шагом (как мы это делаем)</p>
+          <hr />
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+            "
+          >
+            <li>
+              <div class="list1_img" style="float: left; width: 36%">
+                <img src="/lab7/m/200r.jpg" class="img-responsive" alt="dodep" />
+              </div>
+              <div
+                class="list1_desc"
+                style="float: left; width: 61%; margin-left: 1em"
+              >
+                <h3>Шаг 1: Предлагаем лучшие цены</h3>
+                <p>200р и наша комания сделает все в лучшем виде</p>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+            "
+          >
+            <li>
+              <div class="list1_img" style="float: left; width: 36%">
+                <img src="/lab7/m/ravi.jpg" class="img-responsive" alt="kriptomillionery" />
+              </div>
+              <div
+                class="list1_desc"
+                style="float: left; width: 61%; margin-left: 1em"
+              >
+                <h3>Шаг 2: Тщательно подбираем сотрудников</h3>
+                <p>
+                  равшан и джамшут лучшие строители вся мира
+                </p>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+            "
+          >
+            <li>
+              <div class="list1_img" style="float: left; width: 36%">
+                <img src="/lab7/m/konk.jpg" class="img-responsive" alt="n=bancrot" />
+              </div>
+              <div
+                class="list1_desc"
+                style="float: left; width: 61%; margin-left: 1em"
+              >
+                <h3>Шаг 3: Устраняем конкурентов</h3>
+                <p>равшан вечерами лично этим занимается </p>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+            "
+          >
+            <li>
+              <div class="list1_img" style="float: left; width: 36%">
+                <img src="/lab7/m/rek.jpg" class="img-responsive" alt="nomany" />
+              </div>
+              <div
+                class="list1_desc"
+                style="float: left; width: 61%; margin-left: 1em"
+              >
+                <h3>Шаг 4: Реклама</h3>
+                <p>200р помни брат</p>
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="work">
+        <div
+          class="row"
+          style="text-align: center; background: #2a2a2a; color: #fff"
+        >
+          <h2>Наши проекты</h2>
+          <p class="lead">лучшие в мире</p>
+
+          <hr />
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+              color: black;
+            "
+          >
+            <li>
+              <div
+                class="list1_desc"
+                style="float: left; width: 20%; min-width: 100px"
+              >
+                <h3>дача депутата</h3>
+              </div>
+              <div
+                class="list1_img"
+                style="float: left; width: 75%; margin-left: 1em"
+              >
+              <img
+              src="/lab7/m/dac.jpg"
+              width="300"
+              height="500"
+              class="img-responsive"
+              alt="nnn.jpg"
+            />
+          
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+              color: black;
+            "
+          >
+            <li>
+              <div
+                class="list1_desc"
+                style="float: left; width: 20%; min-width: 100px"
+              >
+                <h3>баня насяльника</h3>
+              </div>
+              <div
+                class="list1_img"
+                style="float: left; width: 75%; margin-left: 1em"
+              >
+              <img
+                  src="/lab7/m/bany.jpg"
+                  width="300"
+                  height="500"
+                  class="img-responsive"
+                  alt="nnn.jpg"
+                />
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+
+          <ul
+            style="
+              list-style: none;
+              margin: 15px;
+              padding: 10px;
+              box-shadow: 0 0 5px #aaa;
+              background: #fff;
+              border-radius: 3px;
+              color: black;
+            "
+          >
+            <li>
+              <div
+                class="list1_desc"
+                style="float: left; width: 20%; min-width: 100px"
+              >
+                <h3>
+                  ремонт у чиновника
+                </h3>
+              </div>
+              <div
+                class="list1_img"
+                style="float: left; width: 75%; margin-left: 1em"
+              >
+                <img
+                  src="/lab7/m/rem.jpg"
+                  width="300"
+                  height="500"
+                  class="img-responsive"
+                  alt="nnn.jpg"
+                />
+              </div>
+              <div class="clearfix"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div
+        style="
+          text-align: right;
+          background: #2a2a2a;
+          padding: 1em;
+          color: #fff;
+          margin: 15px;
+        "
+      >
+        ©STROI.RU <br /> 
+      </div>
+    </footer>
+  </body>
+</html>
