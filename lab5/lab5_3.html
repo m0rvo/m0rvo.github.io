@@ -7,8 +7,18 @@
     <title>Использование inline-block при построении колонок</title>
 
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Выравнивание содержимого по центру */
+        }
+        
         .wrap {
             min-width: 1040px;
+            display: inline-block; /* Чтобы центрирование работало */
+            text-align: left; /* Возвращаем обычное выравнивание текста внутри */
+            margin: 0 auto; /* Автоматические отступы по бокам для центрирования */
+            font-size: 0; /* Убираем пробелы между inline-block элементами */
         }
 
         #left,
@@ -16,39 +26,33 @@
         #center {
             display: inline-block;
             vertical-align: top;
-
             box-sizing: border-box;
-
+            font-size: 16px; /* Возвращаем нормальный размер шрифта */
         }
 
         #left {
             background: #ccf;
             width: 200px;
-
-            /* float: left; */
             margin-right: 10px;
         }
 
         #right {
             background: #fcc;
             width: 200px;
-
-            /* float: right; */
             margin-left: 10px;
         }
 
         #center {
             background: #cfc;
             width: 600px;
-
         }
     </style>
 </head>
 
 <body>
     <div class="wrap">
-        <div id="left">left<br>left<br>left<br>left<br>left</div>
-        <div id="center">center text text text text text text text text text text text text text text text text text
+        <div id="left">left<br>left<br>left<br>left<br>left</div><!--
+        --><div id="center">center text text text text text text text text text text text text text text text text text
             text
             text text text text text text text text text text text text text text text text text text text text text
             text
@@ -72,10 +76,8 @@
             text
             text text text text text text text text text text text text text text text text text text text text text
             text
-            text text text text text text text text text text text text text text text text text text text text text
-            text
-            text text text text text text text text text text text text text text text</div>
-        <div id="right">right<br>right<br>right<br>right</div>
+            text text text text text text text text text text text text text text</div><!--
+        --><div id="right">right<br>right<br>right<br>right</div>
     </div>
 </body>
 
