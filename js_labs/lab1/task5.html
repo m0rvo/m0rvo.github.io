@@ -1,37 +1,82 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">ы
-    <title>Отрисовка таблицы</title>
-
-   
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,=">
+    <title>Отрисовка таблицы животных</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 8px;
+            width: 100px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            white-space: pre;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .back {
+            margin-top: 20px;
+        }
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
-
 <body>
-
     <h1>Задание 5</h1>
     <hr>
     <p style="padding-left: 20px">
-        Отрисуйте в <a href="https://habr.com/ru/post/114483/">консоли</a> браузера таблицу вида:
-    <pre>
-    dog dog dog cat cat dog
-    dog dog cat cat dog dog
-    dog cat cat dog dog dog
-    cat cat dog dog dog cat
-    cat dog dog dog cat cat
-    ...			
-    </pre>
-    <p style="padding-left: 20px">
-        Последовательность содержит три собаки, два кота. В каждой строке выводится 6 животных. Число строк задаёт
-        пользователь. Разделитель - символ табуляции.
+        Отрисовка таблицы с последовательностью "dog dog dog cat cat" (3 собаки, 2 кота) в каждой строке.
+        В каждой строке выводится 6 животных, число строк задаётся пользователем.
+    </p>
 
+    <div class="controls">
+        <div class="form-group">
+            <label for="rowsInput">Количество строк:</label>
+            <input type="number" id="rowsInput" min="1" value="5" required>
+        </div>
+        <button id="drawTableButton">Нарисовать таблицу</button>
+        <button id="clearConsoleButton">Очистить консоль</button>
+    </div>
+    
+    <div id="result"></div>
+    
     <p class="back"><a href="lab1.html">Назад</a></p>
+
     <script src="task5.js"></script>
-
 </body>
-
 </html>
