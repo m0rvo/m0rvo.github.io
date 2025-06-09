@@ -1,10 +1,17 @@
 'use strict';
 
 class Book {
+    #price; // Приватное поле
+
     constructor(title, pubYear, price) {
-        this._title = title;
-        this._pubYear = pubYear;
-        this._price = price;
+        this._title = ''; // защищенное поле
+        this._pubYear = 0; // защищенное поле
+        this.#price = 0; // приватное поле
+
+        // Используем сеттеры для проверки значений
+        this.title = title;
+        this.pubYear = pubYear;
+        this.price = price;
     }
 
     get title() {
@@ -30,18 +37,18 @@ class Book {
     }
 
     get price() {
-        return this._price;
+        return this.#price;
     }
 
     set price(newPrice) {
         if (typeof newPrice === 'number' && newPrice > 0)
-            this._price = newPrice;
+            this.#price = newPrice;
         else
             console.error('Price должен быть положительным числом.');
     }
 
     show() {
-        console.log(`Название: ${this._title},\nГод публикации: ${this._pubYear},\nЦена: ${this._price}`);
+        console.log(`Название: ${this._title},\nГод публикации: ${this._pubYear},\nЦена: ${this.#price}`);
     }
 
     static compare(book1, book2) {
@@ -49,6 +56,26 @@ class Book {
     }
 }
 
+// Тестирование
+const book = new Book("JavaScript Basics", 2020, 29.99);
+book.show();
+
+// Пытаемся установить неверные значения
+book.title = ""; // Должно вывести ошибку
+book.title = "   "; // Должно вывести ошибку
+book.title = "New Title"; // Корректное значение
+book.pubYear = -2021; // Должно вывести ошибку
+book.pubYear = "2021"; // Должно вывести ошибку
+book.pubYear = 2021; // Корректное значение
+book.price = 0; // Должно вывести ошибку
+book.price = "free"; // Должно вывести ошибку
+book.price = 39.99; // Корректное значение
+
+book.show();
+
+// Проверка приватного поля
+console.log(book.price); // Работает через геттер
+console.log(book.#price); // Должно вызвать ошибку - приватное поле недоступно напрямую
 
 
 let book1 = new Book('Game of Thrones', 1925, 2300);
