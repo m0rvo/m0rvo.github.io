@@ -12,6 +12,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Обработчик кнопки очистки
     clearBtn.addEventListener('click', clearForm);
+    
+    // Обработчик нажатия Enter в поле ввода возраста
+    document.getElementById('age').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            calculatePension();
+        }
+    });
 });
 
 function calculatePension() {
@@ -47,8 +55,8 @@ function calculatePension() {
              (gender === 'ж' && age >= 55 && age <= 59)) {
         message = 'Скоро пенсия!';
     } 
-    else if ((gender === 'м' && age >= 65) || 
-             (gender === 'ж' && age >= 60)) {
+    else if ((gender === 'м' && age >= 65 && age <= 100) || 
+             (gender === 'ж' && age >= 60 && age <= 100)) {
         message = 'Вам пора на пенсию';
     } 
     else {
