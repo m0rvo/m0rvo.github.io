@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const numberInput = document.getElementById('numberInput');
     const resultElement = document.getElementById('result');
 
-    checkButton.addEventListener('click', function() {
+    function checkAndDisplayResult() {
         const num = parseInt(numberInput.value);
         
         if (isNaN(num) || num < 0) {
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const lastTwo = num % 100;
         let message = '';
 
-        // Реализация с if...else
+        // Проверка склонения слова "ворона"
         if (lastTwo !== 11 && lastTwo !== 12 && lastTwo !== 13 && lastTwo !== 14) {
             if (last === 1) {
                 message = `На ветке сидит ${num} ворона`;
@@ -28,8 +28,16 @@ document.addEventListener('DOMContentLoaded', function() {
             message = `На ветке сидит ${num} ворон`;
         }
         
-        
-        
         resultElement.textContent = message;
+    }
+
+    // Обработчик для кнопки
+    checkButton.addEventListener('click', checkAndDisplayResult);
+
+    // Обработчик для нажатия Enter в поле ввода
+    numberInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            checkAndDisplayResult();
+        }
     });
 });
