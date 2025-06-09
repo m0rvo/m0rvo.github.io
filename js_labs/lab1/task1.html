@@ -43,11 +43,21 @@
             color: red;
             font-size: 14px;
         }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .clear-btn {
+            background-color: #f44336;
+        }
+        .clear-btn:hover {
+            background-color: #d32f2f;
+        }
     </style>
 </head>
 <body>
     <h1>Пенсионный калькулятор</h1>
-    <form id="pensionForm">
+    <form id="pension-form">
         <label for="age">Ваш возраст:</label>
         <input type="number" id="age" name="age" required min="0" max="120">
         <div id="ageError" class="error"></div>
@@ -55,15 +65,18 @@
         <label>Ваш пол:</label>
         <div class="gender-options">
             <label>
-                <input type="radio" name="gender" value="male" required> Мужской
+                <input type="radio" name="gender" value="м" required> Мужской
             </label>
             <label>
-                <input type="radio" name="gender" value="female"> Женский
+                <input type="radio" name="gender" value="ж"> Женский
             </label>
         </div>
         <div id="genderError" class="error"></div>
         
-        <button type="submit">Рассчитать</button>
+        <div class="button-group">
+            <button type="submit">Рассчитать</button>
+            <button type="button" id="clear-btn" class="clear-btn">Очистить</button>
+        </div>
         
         <label for="result">Результат:</label>
         <textarea id="result" name="result" rows="4" readonly></textarea>
