@@ -24,10 +24,7 @@ function pow(x, n) {
 * @param {number} n число, по которое ищется сумма
 * @return {number} сумма чисел от 1 до n
 */
-function sumTo(n) {
-  return (n * (n + 1)) / 2;
-}
-
+const sumTo = new Function('n', 'return n * (n + 1) / 2;');
 // console.log(sumTo(100)); // 5050
 
 

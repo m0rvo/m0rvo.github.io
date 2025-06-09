@@ -74,12 +74,19 @@ for (let i = 0; i < books.length; ++i)
 
 
 // Задание 4
+/**
+ * Проверяет, является ли объект пустым (не содержит собственных перечисляемых свойств).
+ * @param {Object} _object - Объект, который нужно проверить на пустоту.
+ * @returns {boolean} 
+ *   - `true`, если объект не имеет собственных перечисляемых свойств (включая символы).
+ *   - `false`, если объект содержит хотя бы одно перечисляемое свойство или символ.
+ */
 function isEmpty(_object) {
 
-    for (let key in _object)
+    for (let key in _object)// Проверка обычных свойств
         return false;
 
-    if (Object.getOwnPropertySymbols(_object).length > 0)
+    if (Object.getOwnPropertySymbols(_object).length > 0)// Проверка символьных свойств
         return false;
 
     return true;
@@ -135,23 +142,32 @@ console.log('Сравнение объектов из JSON:', JSON.stringify(obj
 
 
 // Задание 7
+/**
+ * Возвращает количество секунд, прошедших с начала текущего дня.
+ * @returns {number} Количество секунд с начала дня (от 0 до 86399).
+ */
 function getSecondsToday() {
 
     let now = new Date();
     let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
-    return Math.floor((now - start) / 1000) // 'cause ms
+    return Math.floor((now - start) / 1000) //испольует разницу между текущим временем и началом дня
 }
 
 console.log("Секунд с начала дня: ", getSecondsToday());
 
 
 // Задание 8
+/**
+ * Форматирует дату в строку вида "дд.мм.гг".
+ * @param {Date} date - Объект Date, который нужно отформатировать.
+ * @returns {string} Строка с датой в формате "дд.мм.гг".
+ */
 function formatDate(date) {
 
     let day = date.getDate().toString().padStart(2, '0');
-    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // month с 0
-    let year = date.getFullYear().toString().slice(-2);
+    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS начинаются с 0
+    let year = date.getFullYear().toString().slice(-2);// Месяцы в JS начинаются с 0
 
     return `${day}.${month}.${year}`;
 }
