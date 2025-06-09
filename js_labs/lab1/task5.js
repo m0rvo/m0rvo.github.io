@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
         resultElement.textContent = tableOutput;
     }
 
-    // Обработчик кнопки "Нарисовать таблицу"
-    drawTableButton.addEventListener('click', function() {
+    // Функция обработки ввода
+    function handleDrawTable() {
         const rows = parseInt(rowsInput.value);
         
         if (isNaN(rows) || rows < 1) {
@@ -42,6 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         drawAnimalTable(rows);
+    }
+
+    // Обработчик кнопки "Нарисовать таблицу"
+    drawTableButton.addEventListener('click', handleDrawTable);
+
+    // Обработчик нажатия Enter в поле ввода
+    rowsInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            handleDrawTable();
+        }
     });
 
     // Обработчик кнопки "Очистить консоль"
