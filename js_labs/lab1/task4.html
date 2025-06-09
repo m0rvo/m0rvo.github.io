@@ -1,31 +1,133 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Цикл for</title>
-
-    
-
+    <link rel="icon" href="data:;base64,=">
+    <title>Цикл for - Простые числа</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, rgba(0,0,0,0), #28a745, rgba(0,0,0,0));
+            margin: 25px 0;
+        }
+        p {
+            padding: 0 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        code {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #495057;
+            font-size: 1rem;
+        }
+        input[type="number"] {
+            padding: 12px 15px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        input[type="number"]:focus {
+            border-color: #28a745;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(0);
+        }
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            background-color: white;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            min-height: 50px;
+        }
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        .back a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
 </head>
-
 <body>
-
     <h1>Задание 4</h1>
     <hr>
     <p style="padding-left: 20px">
-        Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1. Другими
-        словами, n>1 – простое, если при делении на любое число от 2 до n-1 есть остаток. Создайте код, который выводит
-        в консоль все простые числа из интервала от 2 до <code>n</code>. Значение <code>n</code> задаёт пользователь.
-        <br>
-        <br>
-        p.s. Результат выводится в консоль.
+        Натуральное число, большее 1, называется простым, если оно ни на что не делится, кроме себя и 1.
+        Введите число <code>n</code>, чтобы найти все простые числа от 2 до <code>n</code>.
+    </p>
 
+    <div class="form-group">
+        <label for="numberInput">Введите число n (больше 1):</label>
+        <input type="number" id="numberInput" min="2" step="1" required>
+    </div>
+    <button id="findPrimesButton">Найти простые числа</button>
+    
+    <div id="result"></div>
+    
     <p class="back"><a href="lab1.html">Назад</a></p>
+
     <script src="task4.js"></script>
-
 </body>
-
 </html>

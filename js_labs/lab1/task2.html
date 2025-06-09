@@ -1,34 +1,129 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>if else, switch</title>
-
-    
-
+    <link rel="icon" href="data:;base64,=">
+    <title>if else, switch - Вороны на ветке</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin-bottom: 25px;
+        }
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        input[type="number"] {
+            padding: 10px 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="number"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2ecc71;
+        }
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            background-color: #f8f9fa;
+            min-height: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .back {
+            margin-top: 25px;
+            text-align: center;
+        }
+        .back a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 25px;
+            margin-bottom: 25px;
+        }
+        li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="form-container">
+        <h1>Задание 2</h1>
+        <hr>
+        <p style="padding-left: 10px; margin-bottom: 20px;">
+            Введите целое число, и скрипт покажет, сколько ворон сидит на ветке с правильным окончанием:
+        </p>
+        <ul>
+            <li>На ветке сидит 1 воро<strong>на</strong>
+            <li>На ветке сидит 2 ворон<strong>ы</strong>
+            <li>На ветке сидит 5 воро<strong>н</strong>
+        </ul>
 
-    <h1>Задание 2</h1>
-    <hr>
-    <p style="padding-left: 20px">
-        Создайте переменную <code>num</code> и запросите у пользователя её целочисленное значение. Используя конструкции
-        <code>if ... else</code> и <code>switch</code>, напишите скрипт, который проверяет значение в переменной
-        <code>num</code> и выводит фразу "На ветке сидит [значение переменной <code>num</code>] ворон" с правильными
-        окончаниями. То есть:
-    <ul>
-        <li>На ветке сидит 1 воро<strong>на</strong>
-        <li>На ветке сидит 2 ворон<strong>ы</strong>
-        <li>На ветке сидит 5 воро<strong>н</strong>
-    </ul>
+        <div class="form-group">
+            <label for="numberInput">Введите число ворон:</label>
+            <input type="number" id="numberInput" min="0" step="1" required>
+        </div>
+        <button id="checkButton">Показать результат</button>
+        
+        <div id="result"></div>
+        
+        <p class="back"><a href="lab1.html">Назад</a></p>
+    </div>
 
-    <p class="back"><a href="lab1.html">Назад</a></p>
     <script src="task2.js"></script>
-
 </body>
-
 </html>
