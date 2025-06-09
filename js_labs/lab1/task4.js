@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const numberInput = document.getElementById('numberInput');
     const resultElement = document.getElementById('result');
 
-    findPrimesButton.addEventListener('click', function() {
+    function findAndDisplayPrimes() {
         const n = parseInt(numberInput.value);
         
         if (isNaN(n) || n < 2) {
@@ -38,5 +38,15 @@ document.addEventListener('DOMContentLoaded', function() {
             <p><strong>${primes.join(", ")}</strong></p>
             <p>Результат также выведен в консоль.</p>
         `;
+    }
+
+    // Обработчик для кнопки
+    findPrimesButton.addEventListener('click', findAndDisplayPrimes);
+    
+    // Обработчик для нажатия Enter в поле ввода
+    numberInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            findAndDisplayPrimes();
+        }
     });
 });

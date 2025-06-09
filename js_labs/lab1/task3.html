@@ -1,29 +1,56 @@
 <!DOCTYPE html>
-<html lang="ru">
-
+<html>
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Циклы</title>
-
-  
-
+  <title>Ввод числа</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+  </style>
 </head>
-
 <body>
 
-    <h1>Задание 3</h1>
-    <hr>
-    <p style="padding-left: 20px;">
-        Напишите цикл, который предлагает <code>prompt</code> ввести число, большее 100. Если посетитель ввёл другое
-        число – попросить ввести ещё раз, и так далее. Цикл должен спрашивать число пока либо посетитель не введёт
-        число, большее 100, либо не нажмёт кнопку Cancel (ESC).
+  <h1>Ввод числа</h1>
 
-    <p class="back"><a href="lab1.html">Назад</a></p>
-    <script src="task3.js"></script>
+  <a href="https://fedyaevys.ru/javascript/lab1/lab1.html" id="numberLink">Получить число</a>
 
+  <script>
+     'use strict';
+    const numberLink = document.getElementById("numberLink");
+
+    function gettNumber() {
+      let num;
+      while (true) {
+        num = prompt("Введите число большее 100:", "");
+
+        if (num === null) {  
+          return false;
+        }
+
+        num = Number(num); 
+
+        if (isNaN(num)) {
+          alert("Введите число.");
+          continue;
+        }
+
+        if (num > 100) {
+          return true;
+        }
+      }
+    }
+
+    numberLink.addEventListener("click", function(event) {
+      if (!gettNumber()) {
+        event.preventDefault(); 
+        const confirmResult = confirm("Перейти на главную страницу?");
+        if (confirmResult) {
+          window.location.href = "https://fedyaevys.ru/javascript/lab1/lab1.html";  
+        }
+      }
+      
+    });
+  </script>
 
 </body>
-
 </html>
