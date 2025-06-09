@@ -55,8 +55,8 @@ function calculatePension() {
              (gender === 'ж' && age >= 55 && age <= 59)) {
         message = 'Скоро пенсия!';
     } 
-    else if ((gender === 'м' && age >= 65 && age <= 100) || 
-             (gender === 'ж' && age >= 60 && age <= 100)) {
+    else if ((gender === 'м' && age >= 65 ) || 
+             (gender === 'ж' && age >= 60 )) {
         message = 'Вам пора на пенсию';
     } 
     else {
