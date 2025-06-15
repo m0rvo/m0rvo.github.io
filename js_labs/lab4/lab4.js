@@ -1,14 +1,16 @@
 'use strict';
 
+/** Book - класс со сведениями о книге */
 class Book {
-    #price; // Приватное поле
 
+    /**
+     * Конструктор для создания книги
+     * @constructor
+     * @param {string} title - Название книги
+     * @param {number} pubYear - Дата публикации книги  
+     * @param {number} price - Цена продажи
+     */
     constructor(title, pubYear, price) {
-        this._title = ''; // защищенное поле
-        this._pubYear = 0; // защищенное поле
-        this.#price = 0; // приватное поле
-
-        // Используем сеттеры для проверки значений
         this.title = title;
         this.pubYear = pubYear;
         this.price = price;
@@ -19,10 +21,10 @@ class Book {
     }
 
     set title(text) {
-        if (typeof text === 'string' && text.trim() !== '')
-            this._title = text.trim();
-        else
-            console.error('Title должен быть непустой строкой.');
+        if (typeof text !== 'string' || text.trim() === '') {
+            throw new Error('Название не может быть пустым');
+        }
+        this._title = text.trim();
     }
 
     get pubYear() {
@@ -30,25 +32,25 @@ class Book {
     }
 
     set pubYear(newPubYear) {
-        if (typeof newPubYear === 'number' && newPubYear > 0)
-            this._pubYear = newPubYear;
-        else
-            console.error('pubYear должен быть положительным числом.');
+        if (typeof newPubYear !== 'number' || newPubYear <= 0 || !Number.isInteger(newPubYear)) {
+            throw new Error('Год издания должен быть положительным числом');
+        }
+        this._pubYear = newPubYear;
     }
 
     get price() {
-        return this.#price;
+        return this._price;
     }
 
     set price(newPrice) {
-        if (typeof newPrice === 'number' && newPrice > 0)
-            this.#price = newPrice;
-        else
-            console.error('Price должен быть положительным числом.');
+        if (typeof newPrice !== 'number' || newPrice <= 0) {
+            throw new Error('Цена должна быть положительным числом');
+        }
+        this._price = newPrice;
     }
 
     show() {
-        console.log(`Название: ${this._title},\nГод публикации: ${this._pubYear},\nЦена: ${this.#price}`);
+        console.log(`Название: ${this._title}, Год публикации: ${this._pubYear}, Цена: ${this._price}`);
     }
 
     static compare(book1, book2) {
@@ -56,148 +58,110 @@ class Book {
     }
 }
 
-// Тестирование
-const book = new Book("JavaScript Basics", 2020, 29.99);
-book.show();
+try {
+    let book1 = new Book('Джордж Оруэлл', 1949, 800);
+    book1.show();
+    book1.price = 1900;
+    book1.pubYear = 1994
+    book1.show();
 
-// Пытаемся установить неверные значения
-book.title = ""; // Должно вывести ошибку
-book.title = "   "; // Должно вывести ошибку
-book.title = "New Title"; // Корректное значение
-book.pubYear = -2021; // Должно вывести ошибку
-book.pubYear = "2021"; // Должно вывести ошибку
-book.pubYear = 2021; // Корректное значение
-book.price = 0; // Должно вывести ошибку
-book.price = "free"; // Должно вывести ошибку
-book.price = 39.99; // Корректное значение
+    console.log("Цена book1:", book1.price);
 
-book.show();
+    let book2 = new Book('Атлант расправил плечи', 1957, 1500);
+    book2.show();
 
-// Проверка приватного поля
-console.log(book.price); // Работает через геттер
-console.log(book.#price); // Должно вызвать ошибку - приватное поле недоступно напрямую
+    let book3 = new Book('Мастер и Маргарита', 1966, 1000);
+    book3.show();
 
-
-let book1 = new Book('Game of Thrones', 1925, 2300);
-book1.show();
-book1.price = 1900;
-book1.show();
-
-console.log(book1._price);
-
-let book2 = new Book('To Kill a Mockingbird', 1960, 890);
-book2.show()
-let book3 = new Book('1984', 1949, 250);
-book3.show()
-
-
-let books = [book1, book2, book3];
-// console.log(books);
-books.sort(Book.compare);
-console.log("Книги после сортировки по году издания:");
-for (let i = 0; i < books.length; ++i)
-    books[i].show();
-
-
-
-// Задание 4
-/**
- * Проверяет, является ли объект пустым (не содержит собственных перечисляемых свойств).
- * @param {Object} _object - Объект, который нужно проверить на пустоту.
- * @returns {boolean} 
- *   - `true`, если объект не имеет собственных перечисляемых свойств (включая символы).
- *   - `false`, если объект содержит хотя бы одно перечисляемое свойство или символ.
- */
-function isEmpty(_object) {
-
-    for (let key in _object)// Проверка обычных свойств
-        return false;
-
-    if (Object.getOwnPropertySymbols(_object).length > 0)// Проверка символьных свойств
-        return false;
-
-    return true;
-}
-
-let obj1 = { [Symbol()]: true };
-let obj2 = {};
-
-console.log("Объект 1", isEmpty(obj1));
-console.log("Объект 2", isEmpty(obj2));
-
-
-// Задание 5
-let classObject = {
-
-    className: "open menu",
-
-    addClass(cls) {
-        let classes = this.className.split(' ');
-        if (!classes.includes(cls))
-            this.className += " " + cls;
-
-        return this;
-    },
-
-    removeClass(cls) {
-        let classes = this.className.split(' ');
-        let index = classes.indexOf(cls);
-
-        if (index !== -1) {
-            classes.splice(index, 1);
-            this.className = classes.join(' ');
-        }
+    let books = [book1, book2, book3];
+    books.sort(Book.compare);
+    console.log("Книги после сортировки по году издания:");
+    for (let i = 0; i < books.length; ++i) {
+        books[i].show();
     }
+
+    /**
+     * Возвращает true если параметр obj содержит в себе пары ключ/значение
+     * @param {object} obj - любой объект
+     * @returns {boolean} Cодержит ли в себе obj пары ключ/значение
+     */
+    function isEmpty(obj) {
+        if (typeof obj !== 'object' || obj === null) return true;
+
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) return false;
+        }
+        return Object.getOwnPropertySymbols(obj).length === 0;
+    }
+
+    let obj1 = { [Symbol()]: true };
+    let obj2 = {};
+
+    console.log("Объект 1", isEmpty(obj1));
+    console.log("Объект 2", isEmpty(obj2));
+
+    let classObject = {
+        className: "open menu",
+
+        addClass(cls) {
+            let classes = this.className.split(' ');
+            if (!classes.includes(cls)) {
+                this.className += " " + cls;
+            }
+            return this;
+        },
+
+        removeClass(cls) {
+            let classes = this.className.split(' ');
+            let index = classes.indexOf(cls);
+            if (index !== -1) {
+                classes.splice(index, 1);
+                this.className = classes.join(' ');
+            }
+        }
+    };
+
+    classObject.addClass('close');
+    console.log("className после addClass('close'):", classObject.className);
+
+    classObject.addClass('open');
+    console.log("className после addClass('open'):", classObject.className);
+
+    classObject.removeClass('menu');
+    console.log("className после removeClass('menu'):", classObject.className);
+
+
+    let jsonString = JSON.stringify(classObject, null, 2);
+    console.log("JSON строка:", jsonString);
+
+    let object2 = JSON.parse(jsonString);
+    console.log('Сравнение объектов из JSON:', JSON.stringify(object2) === JSON.stringify(classObject));
+
+    /**
+     * Возвращает кол-во секунд с начала текущего дня
+     * @returns {number} Количество секунд
+     */
+    function getSecondsToday() {
+        let now = new Date();
+        let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        return Math.floor((now - start) / 1000);
+    }
+
+    console.log("Секунд с начала дня: ", getSecondsToday());
+
+    /**
+     * Возвращает дату в формате ДД.ММ.ГГ
+     * @returns {string} Форматированная строка с датой
+     */
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear()).slice(-2);
+        return `${day}.${month}.${year}`;
+    }
+
+    const today = new Date();
+    console.log("Дата: ", formatDate(today));
+} catch (error) {
+    console.error("Произошла ошибка:", error.message);
 }
-
-classObject.addClass('close');
-console.log(classObject.className);
-
-classObject.addClass('open');
-console.log(classObject.className);
-
-classObject.removeClass('menu');
-console.log(classObject.className);
-
-
-// Задание 6
-let jsonString = JSON.stringify(classObject, null, 2);
-console.log(jsonString);
-
-let object2 = JSON.parse(jsonString);
-console.log('Сравнение объектов из JSON:', JSON.stringify(object2) === JSON.stringify(classObject));
-
-
-// Задание 7
-/**
- * Возвращает количество секунд, прошедших с начала текущего дня.
- * @returns {number} Количество секунд с начала дня (от 0 до 86399).
- */
-function getSecondsToday() {
-
-    let now = new Date();
-    let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-    return Math.floor((now - start) / 1000) //испольует разницу между текущим временем и началом дня
-}
-
-console.log("Секунд с начала дня: ", getSecondsToday());
-
-
-// Задание 8
-/**
- * Форматирует дату в строку вида "дд.мм.гг".
- * @param {Date} date - Объект Date, который нужно отформатировать.
- * @returns {string} Строка с датой в формате "дд.мм.гг".
- */
-function formatDate(date) {
-
-    let day = date.getDate().toString().padStart(2, '0');
-    let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Месяцы в JS начинаются с 0
-    let year = date.getFullYear().toString().slice(-2);// Месяцы в JS начинаются с 0
-
-    return `${day}.${month}.${year}`;
-}
-
-let date = new Date();
-console.log(formatDate(date));
