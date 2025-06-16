@@ -1,101 +1,167 @@
-// Класс Book представляет книгу с заголовком, годом публикации и ценой
+'use strict';
+
+/** Book - класс со сведениями о книге */
 class Book {
+
+    /**
+     * Конструктор для создания книги
+     * @constructor
+     * @param {string} title - Название книги
+     * @param {number} pubYear - Дата публикации книги  
+     * @param {number} price - Цена продажи
+     */
     constructor(title, pubYear, price) {
         this.title = title;
         this.pubYear = pubYear;
         this.price = price;
     }
 
-    // Геттер для получения заголовка книги
     get title() {
         return this._title;
     }
 
-    // Сеттер для установки заголовка книги
-    set title(value) {
-        if (value === "") {
-            throw new Error("Заголовок не может быть пустым");
+    set title(text) {
+        if (typeof text !== 'string' || text.trim() === '') {
+            throw new Error('Название не может быть пустым');
         }
-        this._title = value;
+        this._title = text.trim();
     }
 
-    // Геттер для получения года публикации книги
     get pubYear() {
         return this._pubYear;
     }
 
-    // Сеттер для установки года публикации книги
-    set pubYear(value) {
-        if (value <= 0) {
-            throw new Error("Год публикации должен быть положительным числом");
+    set pubYear(newPubYear) {
+        if (typeof newPubYear !== 'number' || newPubYear <= 0 || !Number.isInteger(newPubYear)) {
+            throw new Error('Год издания должен быть положительным числом');
         }
-        this._pubYear = value;
+        this._pubYear = newPubYear;
     }
 
-    // Геттер для получения цены книги
     get price() {
         return this._price;
     }
 
-    // Сеттер для установки цены книги
-    set price(value) {
-        if (value <= 0) {
-            throw new Error("Цена должна быть положительным числом");
+    set price(newPrice) {
+        if (typeof newPrice !== 'number' || newPrice <= 0) {
+            throw new Error('Цена должна быть положительным числом');
         }
-        this._price = value;
+        this._price = newPrice;
     }
 
-    // Метод для вывода заголовка и цены книги в консоль
     show() {
-        console.log(`${this._title}: ${this._price}`);
+        console.log(`Название: ${this._title}, Год публикации: ${this._pubYear}, Цена: ${this._price}`);
     }
 
-    // Статический метод для сравнения книг по году публикации
-    static compare(a, b) {
-        return a.pubYear - b.pubYear;
+    static compare(book1, book2) {
+        return book1.pubYear - book2.pubYear;
     }
 }
 
-// Функция для проверки, пуст ли объект, включая неперечисляемые свойства
-function isEmpty(obj) {
-    return Object.getOwnPropertyNames(obj).length === 0 && Object.getOwnPropertySymbols(obj).length === 0;
-}
+try {
+    let book1 = new Book('Джордж Оруэлл', 1949, 800);
+    book1.show();
+    book1.price = 1900;
+    book1.pubYear = 1994
+    book1.show();
 
-// Объект с методами для работы с классами
-let obj = {
-    className: 'open menu',
-    // Метод для добавления класса, если его еще нет
-    addClass: function (cls) {
-        if (!this.className.split(' ').includes(cls)) {
-            this.className += ' ' + cls;
+    console.log("Цена book1:", book1.price);
+
+    let book2 = new Book('Атлант расправил плечи', 1957, 1500);
+    book2.show();
+
+    let book3 = new Book('Мастер и Маргарита', 1966, 1000);
+    book3.show();
+
+    let books = [book1, book2, book3];
+    books.sort(Book.compare);
+    console.log("Книги после сортировки по году издания:");
+    for (let i = 0; i < books.length; ++i) {
+        books[i].show();
+    }
+
+    /**
+     * Возвращает true если параметр obj содержит в себе пары ключ/значение
+     * @param {object} obj - любой объект
+     * @returns {boolean} Cодержит ли в себе obj пары ключ/значение
+     */
+    function isEmpty(obj) {
+        if (typeof obj !== 'object' || obj === null) return true;
+
+        for (let key in obj) {
+            if (obj.hasOwnProperty(key)) return false;
         }
-        this.className = this.className.trim();
-        return this;
-    },
-    // Метод для удаления класса, если он существует
-    removeClass: function (cls) {
-        let classes = this.className.split(' ');
-        let index = classes.indexOf(cls);
-        if (index !== -1) {
-            classes.splice(index, 1);
-            this.className = classes.join(' ');
-        }
-        return this;
+        return Object.getOwnPropertySymbols(obj).length === 0;
     }
-};
 
-// Функция для получения количества секунд с начала текущего дня
-function getSecondsToday() {
-    let now = new Date();
-    let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    let diff = now - today;
-    return Math.floor(diff / 1000);
-}
+    let obj1 = { [Symbol()]: true };
+    let obj2 = {};
 
-// Функция для форматирования даты в строку формата "дд.мм.гг"
-function formatDate(date) {
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear().toString().substr(-2);
-    return `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
+    console.log("Объект 1", isEmpty(obj1));
+    console.log("Объект 2", isEmpty(obj2));
+
+    let classObject = {
+        className: "open menu",
+
+        addClass(cls) {
+            let classes = this.className.split(' ');
+            if (!classes.includes(cls)) {
+                this.className += " " + cls;
+            }
+            return this;
+        },
+
+        removeClass(cls) {
+            let classes = this.className.split(' ');
+            let index = classes.indexOf(cls);
+            if (index !== -1) {
+                classes.splice(index, 1);
+                this.className = classes.join(' ');
+            }
+        }
+    };
+
+    classObject.addClass('close');
+    console.log("className после addClass('close'):", classObject.className);
+
+    classObject.addClass('open');
+    console.log("className после addClass('open'):", classObject.className);
+
+    classObject.removeClass('menu');
+    console.log("className после removeClass('menu'):", classObject.className);
+
+
+    let jsonString = JSON.stringify(classObject, null, 2);
+    console.log("JSON строка:", jsonString);
+
+    let object2 = JSON.parse(jsonString);
+    console.log('Сравнение объектов из JSON:', JSON.stringify(object2) === JSON.stringify(classObject));
+
+    /**
+     * Возвращает кол-во секунд с начала текущего дня
+     * @returns {number} Количество секунд
+     */
+    function getSecondsToday() {
+        let now = new Date();
+        let start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        return Math.floor((now - start) / 1000);
+    }
+
+    console.log("Секунд с начала дня: ", getSecondsToday());
+
+    /**
+     * Возвращает дату в формате ДД.ММ.ГГ
+     * @returns {string} Форматированная строка с датой
+     */
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear()).slice(-2);
+        return `${day}.${month}.${year}`;
+    }
+
+    const today = new Date();
+    console.log("Дата: ", formatDate(today));
+} catch (error) {
+    console.error("Произошла ошибка:", error.message);
 }
