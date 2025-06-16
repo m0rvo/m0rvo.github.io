@@ -79,19 +79,15 @@ try {
     for (let i = 0; i < books.length; ++i) {
         books[i].show();
     }
-
+}
     /**
      * Возвращает true если параметр obj содержит в себе пары ключ/значение
      * @param {object} obj - любой объект
      * @returns {boolean} Cодержит ли в себе obj пары ключ/значение
      */
     function isEmpty(obj) {
-        if (typeof obj !== 'object' || obj === null) return true;
+    return Object.getOwnPropertyNames(obj).length === 0 && Object.getOwnPropertySymbols(obj).length === 0;
 
-        for (let key in obj) {
-            if (obj.hasOwnProperty(key)) return false;
-        }
-        return Object.getOwnPropertySymbols(obj).length === 0;
     }
 
     let obj1 = { [Symbol()]: true };
