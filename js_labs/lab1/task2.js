@@ -1,3 +1,4 @@
+ 'use strict';
 document.addEventListener('DOMContentLoaded', function() {
     const checkButton = document.getElementById('checkButton');
     const numberInput = document.getElementById('numberInput');
