@@ -1,3 +1,4 @@
+ 'use strict';
 document.addEventListener('DOMContentLoaded', function() {
     const findPrimesButton = document.getElementById('findPrimesButton');
     const numberInput = document.getElementById('numberInput');
