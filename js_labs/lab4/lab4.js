@@ -79,7 +79,7 @@ try {
     for (let i = 0; i < books.length; ++i) {
         books[i].show();
     }
-}
+
     /**
      * Возвращает true если параметр obj содержит в себе пары ключ/значение
      * @param {object} obj - любой объект
