@@ -1,3 +1,4 @@
+ 'use strict';
 document.addEventListener('DOMContentLoaded', function() {
     const drawTableButton = document.getElementById('drawTableButton');
     const clearConsoleButton = document.getElementById('clearConsoleButton');
